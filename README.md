@@ -22,19 +22,19 @@ My initial analysis shows that temperature changes throughout the year should no
 ### Recommendations for Additional Queries
 - I would recommend doing a similar analysis on the precipitation in June and December. Periods of high precipitation will likely have an impact on the success of a surf and ice cream shop, so it will be important to look at that data alongside the temperature data.
 You can accomplish this analysis by running the following queries:
-'''
+```
 june_date_str = "06"
 session.query(Measurement.date, Measurement.prcp).filter(func.strftime("%m", Measurement.date) == june_date_str)
 
 dec_date_str = "12"
 session.query(Measurement.date, Measurement.prcp).filter(func.strftime("%m", Measurement.date) == dec_date_str)
-
-'''
+```
 - I would also recommend identifying a temperature that may be too cold for ice cream and surfing (i.e., 60 degrees) and count how many days in each month fall below that temperature.
-'''
+You can accomplish this analysis by running the following queries:
+```
 june_date_str = "06"
 session.query(Measurement.date, Measurement.tobs).filter(func.strftime("%m", Measurement.date) == june_date_str).filter(Measurement.tobs <= "60")
 
 dec_date_str = "12"
 session.query(Measurement.date, Measurement.tobs).filter(func.strftime("%m", Measurement.date) == dec_date_str).filter(Measurement.tobs <= "60")
-'''
+```
